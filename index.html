@@ -43,6 +43,35 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .container{max-width:1180px;margin:0 auto;padding:0 24px}
 
+/* Top announcement bar */
+.topbar{
+  background:linear-gradient(90deg,#1a2960 0%,#0f1d4d 50%,#1a2960 100%);
+  color:#fff;font-size:.88rem;font-weight:500;
+  padding:10px 16px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.topbar::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(217,75,135,.18),transparent);
+  animation:slide 4s ease-in-out infinite;
+}
+@keyframes slide{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.topbar .tb-content{position:relative;z-index:2;display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.topbar .pulse{
+  width:9px;height:9px;border-radius:50%;background:var(--rosa-rosas);
+  animation:blinkTop 1.4s ease-in-out infinite;
+  box-shadow:0 0 0 0 rgba(217,75,135,.7);
+}
+@keyframes blinkTop{
+  0%,100%{box-shadow:0 0 0 0 rgba(217,75,135,.6)}
+  50%{box-shadow:0 0 0 8px rgba(217,75,135,0)}
+}
+.topbar strong{color:var(--rosa-rosas);font-weight:700}
+.topbar a.tb-link{
+  color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:600;
+}
+.topbar a.tb-link:hover{color:var(--rosa-rosas)}
+
 /* Header */
 header{
   position:sticky;top:0;z-index:50;
@@ -63,6 +92,55 @@ header::before{
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-links a{font-weight:500;font-size:.95rem;color:var(--texto-principal);transition:color .2s}
 .nav-links a:hover{color:var(--verde-principal)}
+
+/* Dropdown */
+.dropdown{position:relative}
+.dropdown-toggle{
+  background:none;border:none;cursor:pointer;
+  font-weight:500;font-size:.95rem;color:var(--texto-principal);
+  font-family:inherit;padding:0;display:inline-flex;align-items:center;gap:6px;
+  transition:color .2s;
+}
+.dropdown-toggle:hover,.dropdown.open .dropdown-toggle{color:var(--verde-principal)}
+.dropdown-toggle .arrow{
+  font-size:.7rem;transition:transform .25s;display:inline-block;
+}
+.dropdown.open .dropdown-toggle .arrow{transform:rotate(180deg)}
+.dropdown-menu{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+  background:#fff;border-radius:14px;
+  box-shadow:0 14px 36px rgba(31,41,51,.14);
+  padding:10px;min-width:240px;
+  opacity:0;visibility:hidden;
+  transition:opacity .2s,transform .2s,visibility .2s;
+  border:1px solid rgba(47,125,50,.1);z-index:60;
+}
+.dropdown-menu::before{
+  content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);
+  width:12px;height:12px;background:#fff;
+  border-top:1px solid rgba(47,125,50,.1);
+  border-left:1px solid rgba(47,125,50,.1);
+}
+.dropdown.open .dropdown-menu,.dropdown:hover .dropdown-menu{
+  opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+}
+.dropdown-menu a{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;border-radius:10px;
+  font-size:.93rem;font-weight:500;
+  transition:background .15s,color .15s;
+  white-space:nowrap;
+}
+.dropdown-menu a:hover{background:var(--verde-suave);color:var(--verde-oscuro)}
+.dropdown-menu a .di{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.dropdown-menu a.it-limp .di{background:var(--azul-suave);color:var(--azul-limpieza)}
+.dropdown-menu a.it-jard .di{background:var(--verde-suave);color:var(--verde-principal)}
+.dropdown-menu a .dt{display:flex;flex-direction:column;line-height:1.2}
+.dropdown-menu a .dt small{font-size:.78rem;color:var(--texto-secundario);font-weight:400}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:12px 22px;border-radius:999px;
@@ -105,6 +183,23 @@ header::before{
   margin-bottom:18px;
 }
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--verde-medio)}
+.hero-urgent-chip{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#1a2960,#0f1d4d);
+  color:#fff;padding:10px 18px;border-radius:999px;
+  font-size:.88rem;font-weight:500;
+  margin:0 0 18px 10px;
+  box-shadow:0 8px 20px rgba(26,41,96,.3);
+  transition:transform .2s,box-shadow .2s;border:1px solid rgba(217,75,135,.4);
+}
+.hero-urgent-chip:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(26,41,96,.4)}
+.hero-urgent-chip strong{color:var(--rosa-rosas);font-weight:700}
+.hero-urgent-chip .huc-dot{
+  width:9px;height:9px;border-radius:50%;background:var(--rosa-rosas);
+  animation:blinkTop 1.4s ease-in-out infinite;flex-shrink:0;
+}
+.hero-urgent-chip .huc-arrow{transition:transform .25s;font-weight:700}
+.hero-urgent-chip:hover .huc-arrow{transform:translateX(4px)}
 h1{
   font-family:'Playfair Display',serif;
   font-size:clamp(2.2rem,4.5vw,3.4rem);
@@ -312,6 +407,91 @@ footer a:hover{color:var(--verde-medio)}
   padding-top:20px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.5);
 }
 
+/* Servicio Urgente */
+.urgente{
+  padding:60px 0;
+  background:
+    radial-gradient(800px 400px at 90% 10%, rgba(217,75,135,.15), transparent 60%),
+    linear-gradient(135deg, #1a2960 0%, #0f1d4d 100%);
+  color:#fff;position:relative;overflow:hidden;
+}
+.urgente::before{
+  content:"";position:absolute;top:-80px;left:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,75,135,.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.urgente::after{
+  content:"";position:absolute;bottom:-100px;right:-100px;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(58,159,219,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.urgente-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center;position:relative;z-index:2}
+.urgente-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--rosa-rosas);color:#fff;
+  padding:8px 18px;border-radius:999px;font-size:.85rem;font-weight:700;
+  margin-bottom:18px;letter-spacing:.5px;text-transform:uppercase;
+  box-shadow:0 6px 16px rgba(217,75,135,.4);
+}
+.urgente-badge::before{
+  content:"";width:8px;height:8px;border-radius:50%;background:#fff;
+  animation:blink 1.4s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.urgente h2{
+  font-family:'Playfair Display',serif;color:#fff;
+  font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.15;margin-bottom:14px;
+}
+.urgente h2 .pink{color:var(--rosa-rosas)}
+.urgente .sub{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:26px;max-width:520px}
+.urgente-feats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:28px}
+.urgente-feat{
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.14);
+  padding:14px 16px;border-radius:14px;
+}
+.urgente-feat .uic{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(217,75,135,.22);color:var(--rosa-rosas);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.urgente-feat strong{display:block;font-size:.95rem;margin-bottom:2px;color:#fff}
+.urgente-feat span{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.4}
+.urgente-cta{
+  background:#fff;color:var(--texto-principal);
+  border-radius:20px;padding:30px;text-align:center;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  position:relative;overflow:hidden;
+}
+.urgente-cta::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--rosa-rosas),#1a2960);
+}
+.urgente-cta h3{
+  font-family:'Playfair Display',serif;color:#1a2960;
+  font-size:1.3rem;margin-bottom:6px;
+}
+.urgente-cta .small{color:var(--texto-secundario);font-size:.9rem;margin-bottom:18px}
+.urgente-cta .ph{
+  font-size:1.8rem;font-weight:700;color:var(--rosa-rosas);
+  letter-spacing:1px;margin:14px 0 16px;
+}
+.urgente-cta .badge-mini{
+  display:inline-block;background:var(--rosa-suave);color:var(--rosa-rosas);
+  padding:6px 12px;border-radius:999px;font-size:.78rem;font-weight:600;margin-top:14px;
+}
+.hours-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#1a2960,#0f1d4d);color:#fff;
+  padding:8px 16px;border-radius:999px;font-size:.85rem;font-weight:600;
+  margin:6px 0 6px;letter-spacing:.3px;
+  box-shadow:0 6px 14px rgba(26,41,96,.3);
+}
+
 /* Highlight quote */
 .highlight{
   padding:70px 0;
@@ -365,8 +545,8 @@ footer a:hover{color:var(--verde-medio)}
 .gallery{background:#fff}
 .gallery-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:220px 220px;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:240px;
   gap:16px;
 }
 .gallery-item{
@@ -393,6 +573,7 @@ footer a:hover{color:var(--verde-medio)}
 }
 .gallery-item:hover .tag{opacity:1;transform:translateY(0)}
 .gallery-item.big{grid-column:span 2;grid-row:span 2}
+.gallery-item.tall{grid-row:span 2}
 
 /* FAQ */
 .faq{background:var(--fondo-claro)}
@@ -434,6 +615,121 @@ footer a:hover{color:var(--verde-medio)}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* Contadores animados */
+.counters{
+  background:linear-gradient(180deg,#fff 0%,var(--verde-suave) 100%);
+  padding:70px 0;
+}
+.counters-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  max-width:1000px;margin:0 auto;
+}
+.counter-card{
+  background:#fff;border-radius:20px;padding:32px 22px;
+  text-align:center;box-shadow:var(--sombra-sm);
+  border:1px solid rgba(47,125,50,.1);
+  transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;
+}
+.counter-card:hover{transform:translateY(-6px);box-shadow:var(--sombra-lg)}
+.counter-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--verde-principal),var(--verde-medio));
+}
+.counter-card:nth-child(2)::before{background:linear-gradient(90deg,var(--azul-limpieza),#3a9fdb)}
+.counter-card:nth-child(3)::before{background:linear-gradient(90deg,#1a2960,var(--rosa-rosas))}
+.counter-card:nth-child(4)::before{background:linear-gradient(90deg,var(--rosa-rosas),var(--verde-principal))}
+.counter-value{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:700;
+  color:var(--verde-oscuro);line-height:1;
+  display:inline-flex;align-items:baseline;gap:4px;
+  margin-bottom:8px;
+}
+.counter-card:nth-child(2) .counter-value{color:var(--azul-limpieza)}
+.counter-card:nth-child(3) .counter-value{color:#1a2960}
+.counter-card:nth-child(4) .counter-value{color:var(--rosa-rosas)}
+.counter-value .suffix{font-size:1.6rem;color:inherit;font-weight:600}
+.counter-label{font-weight:600;color:var(--texto-principal);font-size:1rem;margin-bottom:4px}
+.counter-desc{font-size:.85rem;color:var(--texto-secundario)}
+
+/* Madrid map */
+.zona-map{
+  position:relative;width:100%;max-width:520px;margin:30px auto 0;
+  aspect-ratio:1.1;
+}
+.zona-map svg{width:100%;height:100%;display:block}
+.zona-map .pin{
+  position:absolute;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  cursor:default;transition:transform .2s;
+}
+.zona-map .pin:hover{transform:translate(-50%,-50%) scale(1.1);z-index:5}
+.zona-map .pin .dot{
+  width:14px;height:14px;border-radius:50%;
+  background:#fff;border:3px solid var(--verde-principal);
+  box-shadow:0 4px 12px rgba(47,125,50,.4);
+  position:relative;
+}
+.zona-map .pin .dot::after{
+  content:"";position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid var(--verde-principal);opacity:.35;
+  animation:pulseMap 2.5s ease-out infinite;
+}
+.zona-map .pin.center .dot{
+  width:22px;height:22px;background:var(--verde-principal);border-color:#fff;
+}
+.zona-map .pin.center .dot::after{border-color:var(--verde-medio);inset:-10px}
+.zona-map .pin .lab{
+  font-size:.75rem;font-weight:600;color:var(--verde-oscuro);
+  background:#fff;padding:3px 8px;border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  white-space:nowrap;
+}
+.zona-map .pin.center .lab{
+  background:var(--verde-principal);color:#fff;font-size:.85rem;padding:5px 12px;
+}
+@keyframes pulseMap{
+  0%{transform:scale(.8);opacity:.5}
+  100%{transform:scale(2);opacity:0}
+}
+
+/* Back to top */
+.back-top{
+  position:fixed;bottom:24px;left:24px;z-index:55;
+  width:48px;height:48px;border-radius:50%;
+  background:#fff;color:var(--verde-principal);
+  border:2px solid var(--verde-principal);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--sombra-md);
+  opacity:0;visibility:hidden;transform:translateY(20px);
+  transition:opacity .3s,visibility .3s,transform .3s,background .2s;
+  font-size:1.4rem;font-weight:700;
+}
+.back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-top:hover{background:var(--verde-principal);color:#fff}
+
+/* Mobile sticky bottom bar */
+.mobile-cta{
+  position:fixed;bottom:0;left:0;right:0;z-index:58;
+  background:rgba(255,255,255,.98);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(47,125,50,.12);
+  padding:10px 12px 12px;
+  display:none;
+  box-shadow:0 -6px 18px rgba(0,0,0,.06);
+}
+.mobile-cta-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  max-width:520px;margin:0 auto;
+}
+.mobile-cta a{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px;border-radius:12px;font-weight:600;font-size:.95rem;
+  transition:transform .15s;
+}
+.mobile-cta a:active{transform:scale(.97)}
+.mobile-cta .call{background:var(--verde-principal);color:#fff;box-shadow:0 4px 12px rgba(47,125,50,.3)}
+.mobile-cta .wa{background:var(--whatsapp);color:#fff;box-shadow:0 4px 12px rgba(37,211,102,.35)}
+
 /* WhatsApp flotante */
 .wa-float{
   position:fixed;bottom:24px;right:24px;z-index:60;
@@ -454,8 +750,16 @@ footer a:hover{color:var(--verde-medio)}
 /* Responsive */
 @media (max-width:900px){
   .steps{grid-template-columns:repeat(2,1fr)}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
   .gallery-item.big{grid-column:span 2;grid-row:span 1}
+  .gallery-item.tall{grid-row:span 2}
+  .urgente-grid{grid-template-columns:1fr;gap:30px}
+  .urgente-feats{grid-template-columns:1fr}
+  .counters-grid{grid-template-columns:repeat(2,1fr)}
+  .mobile-cta{display:block}
+  .wa-float{display:none}
+  body{padding-bottom:80px}
+  .back-top{bottom:78px;left:16px;width:42px;height:42px}
   .stats{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid rgba(47,125,50,.1)}
   .stat:last-child{border-bottom:none}
@@ -468,21 +772,70 @@ footer a:hover{color:var(--verde-medio)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .zona-grid{grid-template-columns:1fr;text-align:center}
   .footer-grid{grid-template-columns:1fr;gap:28px}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:18px;box-shadow:var(--sombra-md)}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:18px;gap:6px;box-shadow:var(--sombra-md);align-items:stretch}
   .nav-links.open{display:flex}
+  .nav-links > a{padding:12px 14px;border-radius:10px;font-size:1rem}
+  .nav-links > a:hover{background:var(--verde-suave)}
   .menu-toggle{display:block}
-  .nav-links .btn-wa{align-self:flex-start}
+  .nav-links .btn-wa{align-self:stretch;justify-content:center;margin-top:8px}
+  /* Dropdown en móvil: se comporta como acordeón vertical */
+  .dropdown{width:100%}
+  .dropdown-toggle{
+    width:100%;padding:12px 14px;border-radius:10px;
+    justify-content:space-between;font-size:1rem;
+  }
+  .dropdown-toggle:hover{background:var(--verde-suave)}
+  .dropdown:hover .dropdown-menu{opacity:0;visibility:hidden;transform:none}
+  .dropdown-menu{
+    position:static;transform:none;min-width:0;
+    box-shadow:none;border:none;padding:6px 0 6px 12px;
+    background:transparent;
+    max-height:0;overflow:hidden;
+    transition:max-height .3s ease,opacity .2s;
+  }
+  .dropdown-menu::before{display:none}
+  .dropdown.open .dropdown-menu{
+    opacity:1;visibility:visible;transform:none;
+    max-height:300px;
+  }
   section{padding:60px 0}
   .floating-badge{display:none}
 }
 @media (max-width:520px){
   .why-grid{grid-template-columns:1fr}
-  .brand-text strong{font-size:.95rem}
-  .brand-text span{font-size:.72rem}
+  .topbar{font-size:.78rem;padding:8px 12px}
+  .topbar .tb-content{gap:8px}
+  .hero-urgent-chip{margin-left:0;font-size:.8rem;padding:9px 14px;width:100%;justify-content:center}
+  .brand-text strong{font-size:.92rem}
+  .brand-text span{font-size:.7rem}
+  .hero{padding:40px 0 50px}
+  h1{font-size:2rem}
+  .hero p.lead{font-size:1rem}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .service-block{padding:32px 24px}
+  .service-block > div[style*="display:flex"]{flex-direction:column}
+  .service-block > div[style*="display:flex"] .btn{width:100%;justify-content:center}
+  .zona-card{padding:24px}
+  .zona-card .phone{font-size:1.6rem}
+  .wa-float{width:54px;height:54px;bottom:18px;right:18px}
+  .wa-float svg{width:28px;height:28px}
+  body{padding-bottom:60px}
+  .container{padding:0 18px}
+}
+@media (max-width:380px){
+  .brand-text span{display:none}
 }
 </style>
 </head>
 <body>
+
+<div class="topbar">
+  <div class="tb-content">
+    <span class="pulse"></span>
+    <span>🚨 <strong>Servicio Urgente</strong> · Fines de semana y festivos · Horario 9:00–23:00</span>
+    <a href="#urgente" class="tb-link">Ver más →</a>
+  </div>
+</div>
 
 <header>
   <div class="container nav">
@@ -495,7 +848,19 @@ footer a:hover{color:var(--verde-medio)}
     </a>
     <button class="menu-toggle" aria-label="Abrir menú" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     <nav class="nav-links" id="navlinks">
-      <a href="#servicios">Servicios</a>
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="arrow">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="limpieza.html" class="it-limp">
+            <span class="di">🧽</span>
+            <span class="dt">Limpieza<small>Viviendas, oficinas, comunidades…</small></span>
+          </a>
+          <a href="jardineria.html" class="it-jard">
+            <span class="di">🌿</span>
+            <span class="dt">Jardinería<small>Mantenimiento, poda, césped…</small></span>
+          </a>
+        </div>
+      </div>
       <a href="#porque">¿Por qué nosotros?</a>
       <a href="#galeria">Galería</a>
       <a href="#zona">Zona</a>
@@ -512,6 +877,11 @@ footer a:hover{color:var(--verde-medio)}
   <div class="container hero-grid">
     <div>
       <div class="eyebrow">Madrid y alrededores</div>
+      <a href="#urgente" class="hero-urgent-chip">
+        <span class="huc-dot"></span>
+        <span><strong>Servicio Urgente</strong> · 9:00–23:00 · Fines de semana y festivos</span>
+        <span class="huc-arrow">→</span>
+      </a>
       <h1>Limpieza &amp; Jardinería<br><span class="ros">De Rosas</span></h1>
       <p class="lead">Servicios profesionales de limpieza y jardinería con productos adecuados, herramientas profesionales y un trato cercano. Dejamos tu espacio como nuevo y tu jardín cuidado como si fuera nuestro.</p>
       <div class="hero-ctas">
@@ -576,7 +946,23 @@ footer a:hover{color:var(--verde-medio)}
     <div class="dual">
       <div class="service-block limpieza">
         <div class="service-icon">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l3 9h12l3-9"/><path d="M6 12v9h12v-9"/><path d="M9 17h6"/></svg>
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sparkles -->
+            <path d="M24 5l.7 2L27 8l-2.3.7L24 11l-.7-2.3L21 8l2.3-1z" fill="#fff" opacity="0.95"/>
+            <circle cx="27" cy="12" r="1" fill="#fff" opacity="0.85"/>
+            <circle cx="22" cy="14" r=".7" fill="#fff" opacity="0.75"/>
+            <!-- Trigger / handle -->
+            <path d="M5 8h5v3H5z" fill="#fff" opacity="0.95"/>
+            <path d="M10 7h4v1h-4z" fill="#fff" opacity="0.9"/>
+            <!-- Spray dots -->
+            <circle cx="16.5" cy="6" r=".7" fill="#fff" opacity="0.8"/>
+            <circle cx="17.5" cy="8" r=".5" fill="#fff" opacity="0.7"/>
+            <circle cx="18.5" cy="5.5" r=".5" fill="#fff" opacity="0.6"/>
+            <!-- Bottle body -->
+            <path d="M8 11h6v2.5l1.5 1.5V25a3 3 0 01-3 3H9.5a3 3 0 01-3-3V15l1.5-1.5V11z" fill="#fff"/>
+            <!-- Label -->
+            <rect x="8" y="18" width="6" height="4" rx="0.5" fill="currentColor" opacity="0.25"/>
+          </svg>
         </div>
         <h3>Servicios de Limpieza</h3>
         <p>Limpiezas detalladas con productos profesionales para que tu espacio luzca impecable.</p>
@@ -598,7 +984,22 @@ footer a:hover{color:var(--verde-medio)}
 
       <div class="service-block jardineria">
         <div class="service-icon">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C9 12 5 10 5 6c4 0 7 2 7 6z"/><path d="M12 12c3 0 7-2 7-6-4 0-7 2-7 6z"/></svg>
+          <svg width="38" height="38" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sparkles small -->
+            <circle cx="26" cy="8" r=".8" fill="#fff" opacity="0.7"/>
+            <circle cx="6" cy="9" r=".6" fill="#fff" opacity="0.6"/>
+            <!-- Left leaf -->
+            <path d="M16 18C11 18 7 14 7 8c6 0 9 3 9 10z" fill="#fff"/>
+            <path d="M16 18C12 16 9 12 8 9" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+            <!-- Right leaf -->
+            <path d="M16 18c4 0 8-3 8-8-5 0-8 2-8 8z" fill="#fff" opacity="0.92"/>
+            <path d="M16 18c3-1.5 5.5-4 6.5-6.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+            <!-- Stem -->
+            <path d="M16 18v6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <!-- Pot -->
+            <path d="M11 24h10l-1.2 4H12.2z" fill="#fff"/>
+            <path d="M11 24h10" stroke="currentColor" stroke-width="0.8" opacity="0.2"/>
+          </svg>
         </div>
         <h3>Servicios de Jardinería</h3>
         <p>Cuidamos tu jardín como si fuera nuestro, con herramientas adecuadas y atención al detalle.</p>
@@ -617,6 +1018,49 @@ footer a:hover{color:var(--verde-medio)}
           </a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="urgente" id="urgente">
+  <div class="container urgente-grid">
+    <div class="reveal">
+      <div class="urgente-badge">🚨 Servicio Urgente</div>
+      <h2>Limpieza urgente <span class="pink">fines de semana y festivos</span></h2>
+      <p class="sub">Disponibles cuando más nos necesitas. Hogares, locales y eventos — también sábados, domingos y festivos. <strong style="color:#fff">Horario: 9:00 a 23:00.</strong></p>
+      <div class="urgente-feats">
+        <div class="urgente-feat">
+          <div class="uic">⏱️</div>
+          <div><strong>Limpieza urgente</strong><span>Disponibles cuando más nos necesitas</span></div>
+        </div>
+        <div class="urgente-feat">
+          <div class="uic">🏠</div>
+          <div><strong>Hogares y locales</strong><span>Dejamos tus espacios impecables</span></div>
+        </div>
+        <div class="urgente-feat">
+          <div class="uic">✨</div>
+          <div><strong>Después de eventos</strong><span>Nos encargamos de cada detalle</span></div>
+        </div>
+        <div class="urgente-feat">
+          <div class="uic">📅</div>
+          <div><strong>Fines de semana y festivos</strong><span>Sábados, domingos y días festivos</span></div>
+        </div>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/34624176932?text=Hola,%20necesito%20un%20servicio%20urgente%20de%20limpieza" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+        Pedir servicio urgente
+      </a>
+    </div>
+    <div class="urgente-cta reveal">
+      <h3>¡Llámanos sin compromiso!</h3>
+      <p class="small">Tu tranquilidad empieza con un espacio limpio</p>
+      <div class="hours-pill">🕘 Horario: 9:00 — 23:00</div>
+      <div class="ph">624 17 69 32</div>
+      <a class="btn btn-wa" href="https://wa.me/34624176932" target="_blank" rel="noopener" style="width:100%;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+        Escribir por WhatsApp
+      </a>
+      <div class="badge-mini">⚡ Rapidez · Confianza · Calidad</div>
     </div>
   </div>
 </section>
@@ -723,13 +1167,17 @@ footer a:hover{color:var(--verde-medio)}
       <p>Una muestra del tipo de espacios y servicios que cuidamos cada día.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item big reveal">
+      <div class="gallery-item reveal">
         <img src="img/gallery-1.jpg" alt="Servicio de limpieza profesional" loading="lazy">
         <span class="tag">Limpieza profesional</span>
       </div>
       <div class="gallery-item reveal">
         <img src="img/gallery-2.jpg" alt="Limpieza de hogar" loading="lazy">
         <span class="tag">Viviendas</span>
+      </div>
+      <div class="gallery-item tall reveal">
+        <img src="img/gallery-6.jpg" alt="Servicio urgente · Fines de semana y festivos" loading="lazy" style="object-fit:contain;background:#fff">
+        <span class="tag">Servicio urgente</span>
       </div>
       <div class="gallery-item reveal">
         <img src="img/gallery-3.jpg" alt="Mantenimiento de jardín" loading="lazy">
@@ -779,24 +1227,69 @@ footer a:hover{color:var(--verde-medio)}
   </div>
 </section>
 
+<section class="counters">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">En números</div>
+      <h2>Lo que ofrecemos en un vistazo</h2>
+      <p>Servicios, zonas y disponibilidad — sin sorpresas.</p>
+    </div>
+    <div class="counters-grid">
+      <div class="counter-card reveal">
+        <div class="counter-value"><span class="num" data-target="10">0</span><span class="suffix">+</span></div>
+        <div class="counter-label">Servicios profesionales</div>
+        <div class="counter-desc">Limpieza y jardinería</div>
+      </div>
+      <div class="counter-card reveal">
+        <div class="counter-value"><span class="num" data-target="11">0</span><span class="suffix">+</span></div>
+        <div class="counter-label">Zonas en Madrid</div>
+        <div class="counter-desc">Capital y alrededores</div>
+      </div>
+      <div class="counter-card reveal">
+        <div class="counter-value"><span class="num" data-target="14">0</span><span class="suffix">h</span></div>
+        <div class="counter-label">Servicio urgente</div>
+        <div class="counter-desc">De 9:00 a 23:00</div>
+      </div>
+      <div class="counter-card reveal">
+        <div class="counter-value"><span class="num" data-target="0">0</span><span class="suffix">€</span></div>
+        <div class="counter-label">Presupuesto</div>
+        <div class="counter-desc">Sin compromiso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="zona" class="zona">
   <div class="container zona-grid">
     <div>
       <div class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff">Zona de trabajo</div>
       <h2>Madrid y alrededores</h2>
       <p>Damos servicio en Madrid capital y municipios cercanos. Si tienes dudas sobre si llegamos a tu zona, pregúntanos por WhatsApp y te respondemos en minutos.</p>
-      <div class="zona-tags">
-        <span>Madrid capital</span>
-        <span>Móstoles</span>
-        <span>Alcorcón</span>
-        <span>Getafe</span>
-        <span>Leganés</span>
-        <span>Fuenlabrada</span>
-        <span>Pozuelo</span>
-        <span>Las Rozas</span>
-        <span>Majadahonda</span>
-        <span>Alcobendas</span>
-        <span>San Sebastián de los Reyes</span>
+      <div class="zona-map">
+        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.18)"/>
+              <stop offset="70%" stop-color="rgba(255,255,255,.04)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+          </defs>
+          <circle cx="260" cy="240" r="220" fill="url(#mapGlow)"/>
+          <circle cx="260" cy="240" r="170" fill="none" stroke="rgba(255,255,255,.15)" stroke-dasharray="4 6"/>
+          <circle cx="260" cy="240" r="110" fill="none" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 6"/>
+          <path d="M260 70 L260 410 M90 240 L430 240" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        </svg>
+        <div class="pin center" style="left:50%;top:50%"><div class="dot"></div><div class="lab">Madrid capital</div></div>
+        <div class="pin" style="left:30%;top:18%"><div class="dot"></div><div class="lab">Alcobendas</div></div>
+        <div class="pin" style="left:62%;top:14%"><div class="dot"></div><div class="lab">San Sebastián de los R.</div></div>
+        <div class="pin" style="left:10%;top:38%"><div class="dot"></div><div class="lab">Las Rozas</div></div>
+        <div class="pin" style="left:18%;top:60%"><div class="dot"></div><div class="lab">Majadahonda</div></div>
+        <div class="pin" style="left:28%;top:80%"><div class="dot"></div><div class="lab">Pozuelo</div></div>
+        <div class="pin" style="left:52%;top:88%"><div class="dot"></div><div class="lab">Alcorcón</div></div>
+        <div class="pin" style="left:75%;top:82%"><div class="dot"></div><div class="lab">Móstoles</div></div>
+        <div class="pin" style="left:88%;top:62%"><div class="dot"></div><div class="lab">Fuenlabrada</div></div>
+        <div class="pin" style="left:82%;top:40%"><div class="dot"></div><div class="lab">Leganés</div></div>
+        <div class="pin" style="left:70%;top:30%"><div class="dot"></div><div class="lab">Getafe</div></div>
       </div>
     </div>
     <div class="zona-card">
@@ -862,13 +1355,53 @@ footer a:hover{color:var(--verde-medio)}
   </div>
 </footer>
 
+<button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+
+<div class="mobile-cta">
+  <div class="mobile-cta-grid">
+    <a class="call" href="tel:+34624176932">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar
+    </a>
+    <a class="wa" href="https://wa.me/34624176932" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
 <a class="wa-float" href="https://wa.me/34624176932" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
 </a>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
-document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open')));
+document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('navlinks').classList.remove('open');
+  document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+}));
+
+// Dropdown toggle (funciona en móvil y desktop)
+document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const dd = btn.closest('.dropdown');
+    const wasOpen = dd.classList.contains('open');
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!wasOpen) dd.classList.add('open');
+    btn.setAttribute('aria-expanded', !wasOpen);
+  });
+});
+// Cerrar dropdown al hacer click fuera
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown.open').forEach(d => {
+      d.classList.remove('open');
+      const t = d.querySelector('.dropdown-toggle');
+      if (t) t.setAttribute('aria-expanded','false');
+    });
+  }
+});
 
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {
@@ -887,6 +1420,34 @@ document.querySelectorAll('.service-block, .why-card').forEach((el,i) => {
   el.style.transitionDelay = (i * 60) + 'ms';
   io.observe(el);
 });
+
+// Animated counters
+const counterIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    counterIO.unobserve(el);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.num').forEach(n => counterIO.observe(n));
+
+// Back to top
+const backBtn = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) backBtn.classList.add('visible');
+  else backBtn.classList.remove('visible');
+}, { passive: true });
+backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 </body>
 </html>
