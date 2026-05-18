@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Limpieza & Jardinería de Rosas — Madrid y alrededores</title>
+<meta name="description" content="Servicios profesionales de limpieza y jardinería en Madrid y alrededores. Presupuesto sin compromiso por WhatsApp." />
+<link rel="icon" href="img/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde-principal:#2F7D32;
+  --verde-oscuro:#1F5C28;
+  --verde-medio:#4C9A3D;
+  --verde-suave:#EAF7EA;
+  --azul-limpieza:#0B6FAE;
+  --azul-suave:#EAF6FF;
+  --rosa-rosas:#D94B87;
+  --rosa-suave:#FDECF4;
+  --beige-natural:#F7F3EA;
+  --fondo-claro:#FAFCF8;
+  --blanco:#FFFFFF;
+  --texto-principal:#1F2933;
+  --texto-secundario:#5B6470;
+  --sombra-sm:0 2px 8px rgba(31,41,51,.06);
+  --sombra-md:0 8px 24px rgba(31,41,51,.08);
+  --sombra-lg:0 18px 40px rgba(31,41,51,.12);
+  --radio:18px;
+  --whatsapp:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--texto-principal);
+  background:var(--fondo-claro);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(47,125,50,.08);
+}
+header::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--verde-principal) 0%,var(--verde-medio) 40%,var(--azul-limpieza) 70%,var(--rosa-rosas) 100%);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:var(--sombra-sm)}
+.brand-text{display:flex;flex-direction:column;line-height:1.1}
+.brand-text strong{font-family:'Playfair Display',serif;color:var(--verde-oscuro);font-size:1.05rem}
+.brand-text span{font-size:.78rem;color:var(--texto-secundario)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-weight:500;font-size:.95rem;color:var(--texto-principal);transition:color .2s}
+.nav-links a:hover{color:var(--verde-principal)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  font-weight:600;font-size:.95rem;
+  transition:transform .15s ease,box-shadow .2s ease,background .2s;
+  border:none;cursor:pointer;
+}
+.btn-wa{background:var(--whatsapp);color:#fff;box-shadow:0 6px 16px rgba(37,211,102,.35)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,211,102,.45)}
+.btn-verde{background:var(--verde-principal);color:#fff}
+.btn-verde:hover{background:var(--verde-oscuro)}
+.btn-outline{background:#fff;color:var(--verde-principal);border:2px solid var(--verde-principal)}
+.btn-outline:hover{background:var(--verde-suave)}
+.btn-azul{background:var(--azul-limpieza);color:#fff;box-shadow:0 6px 16px rgba(11,111,174,.3)}
+.btn-azul:hover{background:#085a8e;transform:translateY(-2px);box-shadow:0 10px 22px rgba(11,111,174,.4)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--verde-oscuro)}
+
+/* Hero */
+.hero{
+  position:relative;
+  padding:80px 0 90px;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(76,154,61,.20), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(11,111,174,.14), transparent 60%),
+    radial-gradient(600px 300px at 50% 100%, rgba(217,75,135,.06), transparent 70%),
+    linear-gradient(180deg,#fff 0%,var(--fondo-claro) 100%);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;top:-100px;right:-100px;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,75,135,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--verde-suave);color:var(--verde-oscuro);
+  padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:600;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--verde-medio)}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  line-height:1.1;color:var(--verde-oscuro);
+  margin-bottom:18px;font-weight:700;
+}
+h1 .ros{
+  color:var(--rosa-rosas);
+  position:relative;display:inline-block;
+}
+h1 .ros::after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M0 3 Q 25 0 50 3 T 100 3' stroke='%23D94B87' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%;
+  opacity:.7;
+}
+.hero p.lead{
+  font-size:1.1rem;color:var(--texto-secundario);
+  max-width:540px;margin-bottom:30px;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;color:var(--texto-secundario);font-size:.92rem}
+.hero-meta div{display:flex;align-items:center;gap:8px}
+.hero-meta svg{flex-shrink:0}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.logo-wrap{
+  position:relative;width:min(440px,90%);
+  aspect-ratio:1;border-radius:50%;
+  background:#fff;
+  box-shadow:var(--sombra-lg),inset 0 0 0 8px var(--verde-suave);
+  padding:18px;
+  animation:float 6s ease-in-out infinite;
+}
+.logo-wrap img{width:100%;height:100%;border-radius:50%;object-fit:contain}
+.logo-wrap::after{
+  content:"";position:absolute;inset:-12px;border-radius:50%;
+  border:2px dashed rgba(47,125,50,.25);
+  animation:spin 40s linear infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.floating-badge{
+  position:absolute;background:#fff;border-radius:14px;padding:12px 16px;
+  box-shadow:var(--sombra-md);font-size:.85rem;font-weight:600;
+  display:flex;align-items:center;gap:10px;
+}
+.floating-badge .dot{width:10px;height:10px;border-radius:50%}
+.fb-1{top:8%;left:-2%;color:var(--azul-limpieza)}
+.fb-1 .dot{background:var(--azul-limpieza)}
+.fb-2{bottom:10%;right:-4%;color:var(--verde-principal)}
+.fb-2 .dot{background:var(--verde-medio)}
+.fb-3{top:50%;left:-8%;color:var(--rosa-rosas);transform:translateY(-50%)}
+.fb-3 .dot{background:var(--rosa-rosas)}
+
+/* Sections */
+section{padding:90px 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.section-head .eyebrow{margin-bottom:14px}
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.2vw,2.5rem);
+  color:var(--verde-oscuro);margin-bottom:14px;line-height:1.2;
+}
+.section-head p{color:var(--texto-secundario);font-size:1.05rem}
+
+/* Servicios principales */
+.dual{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+}
+.service-block{
+  border-radius:var(--radio);
+  padding:42px 36px;
+  background:#fff;
+  box-shadow:var(--sombra-md);
+  border:1px solid transparent;
+  transition:transform .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+}
+.service-block:hover{transform:translateY(-6px);box-shadow:var(--sombra-lg)}
+.service-block.limpieza{
+  background:linear-gradient(165deg,#fff 0%,var(--azul-suave) 100%);
+  border-color:rgba(11,111,174,.18);
+}
+.service-block.limpieza::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--azul-limpieza),#3a9fdb);
+}
+.service-block.jardineria{
+  background:linear-gradient(165deg,#fff 0%,var(--verde-suave) 100%);
+  border-color:rgba(47,125,50,.18);
+}
+.service-block.jardineria::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:5px;
+  background:linear-gradient(90deg,var(--verde-principal),var(--verde-medio));
+}
+.service-icon{
+  width:72px;height:72px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;margin-bottom:22px;
+}
+.limpieza .service-icon{
+  background:linear-gradient(135deg,var(--azul-limpieza) 0%,#3a9fdb 100%);
+  color:#fff;box-shadow:0 8px 20px rgba(11,111,174,.32);
+}
+.jardineria .service-icon{
+  background:linear-gradient(135deg,var(--verde-principal) 0%,var(--verde-medio) 100%);
+  color:#fff;box-shadow:0 8px 20px rgba(47,125,50,.32);
+}
+.service-block h3{
+  font-family:'Playfair Display',serif;font-size:1.6rem;
+  margin-bottom:10px;
+}
+.limpieza h3{color:var(--azul-limpieza)}
+.jardineria h3{color:var(--verde-oscuro)}
+.service-block > p{color:var(--texto-secundario);margin-bottom:24px}
+.service-list{list-style:none;display:grid;gap:12px;margin-bottom:28px}
+.service-list li{display:flex;align-items:flex-start;gap:12px;font-size:.97rem}
+.service-list .chk{
+  flex-shrink:0;width:24px;height:24px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:#fff;font-weight:700;margin-top:2px;
+}
+.limpieza .chk{background:var(--azul-limpieza)}
+.jardineria .chk{background:var(--verde-medio)}
+
+/* Por qué elegirnos */
+.why{background:#fff}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.why-card{
+  background:var(--fondo-claro);border-radius:var(--radio);
+  padding:28px 24px;text-align:center;
+  border:1px solid rgba(47,125,50,.08);
+  transition:transform .2s,box-shadow .2s;
+}
+.why-card:hover{transform:translateY(-4px);box-shadow:var(--sombra-md)}
+.why-icon{
+  width:60px;height:60px;border-radius:16px;margin:0 auto 16px;
+  background:var(--verde-suave);color:var(--verde-principal);
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  transition:transform .25s;
+}
+.why-card:hover .why-icon{transform:scale(1.08) rotate(-4deg)}
+.why-card:nth-child(4n+2) .why-icon{background:var(--azul-suave);color:var(--azul-limpieza)}
+.why-card:nth-child(4n+3) .why-icon{background:var(--rosa-suave);color:var(--rosa-rosas)}
+.why-card:nth-child(4n+4) .why-icon{background:var(--beige-natural);color:var(--verde-oscuro)}
+.why-card h4{font-size:1.05rem;margin-bottom:8px;color:var(--verde-oscuro)}
+.why-card p{font-size:.9rem;color:var(--texto-secundario);line-height:1.5}
+
+/* Zona */
+.zona{
+  background:linear-gradient(135deg,var(--verde-oscuro) 0%,var(--verde-principal) 100%);
+  color:#fff;padding:70px 0;
+}
+.zona-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.zona h2{color:#fff}
+.zona p{color:rgba(255,255,255,.9);margin-bottom:22px}
+.zona-tags{display:flex;flex-wrap:wrap;gap:10px}
+.zona-tags span{
+  background:rgba(255,255,255,.15);padding:8px 14px;
+  border-radius:999px;font-size:.88rem;backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.18);
+}
+.zona-card{
+  background:#fff;color:var(--texto-principal);
+  border-radius:var(--radio);padding:32px;
+  box-shadow:var(--sombra-lg);text-align:center;
+}
+.zona-card h3{
+  font-family:'Playfair Display',serif;color:var(--verde-oscuro);
+  font-size:1.4rem;margin-bottom:8px;
+}
+.zona-card .phone{
+  font-size:2rem;font-weight:700;color:var(--verde-principal);
+  letter-spacing:1px;margin:14px 0 18px;font-family:'Inter';
+}
+
+/* CTA final */
+.cta-final{
+  text-align:center;padding:80px 0;
+  background:
+    radial-gradient(800px 400px at 50% 0%, rgba(217,75,135,.08), transparent 60%),
+    var(--rosa-suave);
+}
+.cta-final h2{margin-bottom:14px}
+.cta-final p{color:var(--texto-secundario);max-width:560px;margin:0 auto 30px}
+
+/* Footer */
+footer{
+  background:#1a2227;color:rgba(255,255,255,.78);
+  padding:50px 0 24px;font-size:.92rem;
+  position:relative;
+}
+footer::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--verde-principal) 0%,var(--verde-medio) 33%,var(--azul-limpieza) 66%,var(--rosa-rosas) 100%);
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.footer-brand img{width:54px;height:54px;border-radius:50%;background:#fff;padding:4px}
+.footer-brand strong{font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem}
+footer h5{color:#fff;font-size:1rem;margin-bottom:14px;font-weight:600}
+footer ul{list-style:none;display:grid;gap:8px}
+footer a:hover{color:var(--verde-medio)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:20px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.5);
+}
+
+/* Highlight quote */
+.highlight{
+  padding:70px 0;
+  background:
+    radial-gradient(700px 350px at 50% 50%, rgba(217,75,135,.10), transparent 70%),
+    var(--blanco);
+  position:relative;
+}
+.highlight::before,.highlight::after{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);
+  width:60px;height:3px;border-radius:999px;
+  background:linear-gradient(90deg,var(--verde-principal),var(--rosa-rosas),var(--azul-limpieza));
+  opacity:.6;
+}
+.highlight::before{top:0}
+.highlight::after{bottom:0}
+.quote-wrap{max-width:780px;margin:0 auto;text-align:center;position:relative}
+.quote-mark{
+  font-family:'Playfair Display',serif;font-size:5rem;line-height:1;
+  color:var(--rosa-rosas);opacity:.4;margin-bottom:-30px;
+}
+.quote-text{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,2.4vw,1.9rem);
+  line-height:1.4;color:var(--verde-oscuro);
+  margin-bottom:24px;
+}
+.quote-text em{color:var(--rosa-rosas);font-style:normal;font-weight:600}
+.quote-sub{color:var(--texto-secundario);font-size:1rem}
+
+/* Process */
+.process{background:var(--beige-natural)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.step{
+  background:#fff;border-radius:var(--radio);padding:30px 24px;
+  text-align:center;box-shadow:var(--sombra-sm);position:relative;
+  transition:transform .25s,box-shadow .25s;
+}
+.step:hover{transform:translateY(-4px);box-shadow:var(--sombra-md)}
+.step-num{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--verde-principal),var(--verde-medio));
+  color:#fff;font-weight:700;font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 16px;box-shadow:0 6px 14px rgba(47,125,50,.3);
+}
+.step h4{color:var(--verde-oscuro);margin-bottom:8px;font-size:1.05rem}
+.step p{color:var(--texto-secundario);font-size:.92rem}
+
+/* Gallery */
+.gallery{background:#fff}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:220px 220px;
+  gap:16px;
+}
+.gallery-item{
+  border-radius:var(--radio);overflow:hidden;
+  position:relative;cursor:pointer;
+  box-shadow:var(--sombra-sm);
+}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease;
+}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55) 100%);
+  opacity:0;transition:opacity .3s;
+}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .tag{
+  position:absolute;bottom:14px;left:14px;
+  color:#fff;font-weight:600;font-size:.95rem;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .3s,transform .3s;z-index:2;
+}
+.gallery-item:hover .tag{opacity:1;transform:translateY(0)}
+.gallery-item.big{grid-column:span 2;grid-row:span 2}
+
+/* FAQ */
+.faq{background:var(--fondo-claro)}
+.faq-list{max-width:780px;margin:0 auto;display:grid;gap:14px}
+.faq-item{
+  background:#fff;border-radius:14px;
+  border:1px solid rgba(47,125,50,.1);
+  overflow:hidden;transition:box-shadow .2s;
+}
+.faq-item[open]{box-shadow:var(--sombra-md)}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  padding:20px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:600;color:var(--verde-oscuro);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:"+";font-size:1.4rem;color:var(--verde-principal);
+  transition:transform .25s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .ans{padding:0 24px 20px;color:var(--texto-secundario);font-size:.96rem}
+
+/* Stats bar */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  background:#fff;border-radius:var(--radio);
+  box-shadow:var(--sombra-md);margin-top:50px;
+  overflow:hidden;
+}
+.stat{padding:24px;text-align:center;border-right:1px solid rgba(47,125,50,.1)}
+.stat:last-child{border-right:none}
+.stat .icon{font-size:1.6rem;margin-bottom:6px}
+.stat strong{display:block;color:var(--verde-oscuro);font-size:1.05rem;margin-bottom:2px}
+.stat span{font-size:.85rem;color:var(--texto-secundario)}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* WhatsApp flotante */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;z-index:60;
+  width:60px;height:60px;border-radius:50%;
+  background:var(--whatsapp);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px rgba(37,211,102,.5);
+  transition:transform .2s;animation:pulse 2.5s infinite;
+}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.5),0 10px 28px rgba(37,211,102,.5)}
+  70%{box-shadow:0 0 0 18px rgba(37,211,102,0),0 10px 28px rgba(37,211,102,.5)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 10px 28px rgba(37,211,102,.5)}
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gallery-item.big{grid-column:span 2;grid-row:span 1}
+  .stats{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid rgba(47,125,50,.1)}
+  .stat:last-child{border-bottom:none}
+  .hero{padding:50px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-ctas{justify-content:center}
+  .hero-meta{justify-content:center}
+  .dual{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .zona-grid{grid-template-columns:1fr;text-align:center}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:18px;box-shadow:var(--sombra-md)}
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+  .nav-links .btn-wa{align-self:flex-start}
+  section{padding:60px 0}
+  .floating-badge{display:none}
+}
+@media (max-width:520px){
+  .why-grid{grid-template-columns:1fr}
+  .brand-text strong{font-size:.95rem}
+  .brand-text span{font-size:.72rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand">
+      <img src="img/logo.jpg" alt="Logo Limpieza & Jardinería de Rosas">
+      <div class="brand-text">
+        <strong>Limpieza &amp; Jardinería</strong>
+        <span>de Rosas · Madrid</span>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#porque">¿Por qué nosotros?</a>
+      <a href="#galeria">Galería</a>
+      <a href="#zona">Zona</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-wa" href="https://wa.me/34624176932" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Madrid y alrededores</div>
+      <h1>Limpieza &amp; Jardinería<br><span class="ros">De Rosas</span></h1>
+      <p class="lead">Servicios profesionales de limpieza y jardinería con productos adecuados, herramientas profesionales y un trato cercano. Dejamos tu espacio como nuevo y tu jardín cuidado como si fuera nuestro.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" href="https://wa.me/34624176932?text=Hola,%20me%20gustaría%20pedir%20un%20presupuesto" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+          Pedir presupuesto gratis
+        </a>
+        <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--verde-principal)" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          Presupuesto sin compromiso
+        </div>
+        <div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--verde-principal)" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          Trato cercano y profesional
+        </div>
+        <div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--verde-principal)" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          Productos y herramientas adecuadas
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="logo-wrap">
+        <img src="img/logo.jpg" alt="Logo Limpieza y Jardinería de Rosas">
+      </div>
+      <div class="floating-badge fb-1"><span class="dot"></span>Limpieza profesional</div>
+      <div class="floating-badge fb-2"><span class="dot"></span>Jardinería integral</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="icon">🧽</div>
+        <strong>Limpieza profesional</strong>
+        <span>Viviendas, oficinas, locales y comunidades</span>
+      </div>
+      <div class="stat">
+        <div class="icon">🌿</div>
+        <strong>Jardinería integral</strong>
+        <span>Mantenimiento, poda y diseño</span>
+      </div>
+      <div class="stat">
+        <div class="icon">📍</div>
+        <strong>Madrid y alrededores</strong>
+        <span>Atención rápida por WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Nuestros servicios</div>
+      <h2>Dos especialidades, un solo equipo de confianza</h2>
+      <p>Cubrimos todo lo que tu hogar, negocio o jardín necesita para verse y mantenerse impecable.</p>
+    </div>
+
+    <div class="dual">
+      <div class="service-block limpieza">
+        <div class="service-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l3 9h12l3-9"/><path d="M6 12v9h12v-9"/><path d="M9 17h6"/></svg>
+        </div>
+        <h3>Servicios de Limpieza</h3>
+        <p>Limpiezas detalladas con productos profesionales para que tu espacio luzca impecable.</p>
+        <ul class="service-list">
+          <li><span class="chk">✓</span>Limpieza de viviendas</li>
+          <li><span class="chk">✓</span>Limpieza de oficinas y locales</li>
+          <li><span class="chk">✓</span>Limpiezas profundas (cocinas y baños)</li>
+          <li><span class="chk">✓</span>Limpieza de comunidades</li>
+          <li><span class="chk">✓</span>Cristales y escaparates</li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-azul" href="limpieza.html">Ver detalles →</a>
+          <a class="btn btn-wa" href="https://wa.me/34624176932?text=Hola,%20quiero%20información%20sobre%20limpieza" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+            Presupuesto
+          </a>
+        </div>
+      </div>
+
+      <div class="service-block jardineria">
+        <div class="service-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C9 12 5 10 5 6c4 0 7 2 7 6z"/><path d="M12 12c3 0 7-2 7-6-4 0-7 2-7 6z"/></svg>
+        </div>
+        <h3>Servicios de Jardinería</h3>
+        <p>Cuidamos tu jardín como si fuera nuestro, con herramientas adecuadas y atención al detalle.</p>
+        <ul class="service-list">
+          <li><span class="chk">✓</span>Mantenimiento de jardines</li>
+          <li><span class="chk">✓</span>Corte de césped</li>
+          <li><span class="chk">✓</span>Poda de árboles y setos</li>
+          <li><span class="chk">✓</span>Limpieza de parcelas</li>
+          <li><span class="chk">✓</span>Diseño básico de jardines</li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-verde" href="jardineria.html">Ver detalles →</a>
+          <a class="btn btn-wa" href="https://wa.me/34624176932?text=Hola,%20quiero%20información%20sobre%20jardinería" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+            Presupuesto
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="porque" class="why">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">¿Por qué elegirnos?</div>
+      <h2>Trabajo serio, resultados que se notan</h2>
+      <p>Nos diferenciamos por la cercanía, el detalle y la honestidad con cada cliente.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>Seriedad y confianza</h4>
+        <p>Cumplimos lo que prometemos: horarios, presupuesto y resultado.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🧴</div>
+        <h4>Productos profesionales</h4>
+        <p>Usamos productos y herramientas adecuadas para cada trabajo.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">✨</div>
+        <h4>Resultados impecables</h4>
+        <p>Trabajo detallado para que tu espacio o jardín luzca de verdad.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💶</div>
+        <h4>Precios económicos</h4>
+        <p>Presupuesto sin compromiso, claro y ajustado a lo que necesitas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h4>Rapidez y eficacia</h4>
+        <p>Organizados para resolver pronto sin perder calidad.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <h4>Herramientas adecuadas</h4>
+        <p>Equipo profesional para cada tipo de servicio.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <h4>Presupuesto sin compromiso</h4>
+        <p>Te decimos el precio antes, sin sorpresas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌿</div>
+        <h4>Trato cercano</h4>
+        <p>Atención personal y resolutiva en cada visita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="highlight">
+  <div class="container">
+    <div class="quote-wrap reveal">
+      <div class="quote-mark">“</div>
+      <p class="quote-text">Dejamos tu espacio <em>como nuevo</em> y cuidamos tu jardín <em>como si fuera nuestro</em>.</p>
+      <p class="quote-sub">Trato cercano, resultados impecables y presupuesto sin compromiso.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Pedir tu presupuesto es muy fácil</h2>
+      <p>En cuatro pasos sencillos lo tenemos todo listo, sin complicaciones ni compromisos.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Cuéntanos</h4>
+        <p>Escríbenos por WhatsApp con lo que necesitas: limpieza, jardín o ambos.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Presupuesto</h4>
+        <p>Te enviamos un presupuesto claro y sin compromiso lo antes posible.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Agendamos</h4>
+        <p>Acordamos día y hora que mejor te encaje para realizar el trabajo.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Resultado</h4>
+        <p>Hacemos el trabajo con detalle y te dejamos el espacio impecable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Nuestro trabajo</div>
+      <h2>Limpieza y jardín cuidados al detalle</h2>
+      <p>Una muestra del tipo de espacios y servicios que cuidamos cada día.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item big reveal">
+        <img src="img/gallery-1.jpg" alt="Servicio de limpieza profesional" loading="lazy">
+        <span class="tag">Limpieza profesional</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/gallery-2.jpg" alt="Limpieza de hogar" loading="lazy">
+        <span class="tag">Viviendas</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/gallery-3.jpg" alt="Mantenimiento de jardín" loading="lazy">
+        <span class="tag">Jardinería</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/gallery-4.jpg" alt="Limpieza profunda" loading="lazy">
+        <span class="tag">Limpieza profunda</span>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="img/gallery-5.jpg" alt="Corte de césped y poda" loading="lazy">
+        <span class="tag">Corte y poda</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Resolvemos tus dudas</h2>
+      <p>Las preguntas que más nos hacen antes de contratar un servicio.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>¿Cuánto cuesta un servicio?</summary>
+        <div class="ans">Cada trabajo es distinto: depende del tamaño del espacio, del tipo de limpieza o jardinería y de la frecuencia. Por eso preparamos un presupuesto personalizado y sin compromiso para cada cliente.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿En qué zonas trabajáis?</summary>
+        <div class="ans">Damos servicio en Madrid capital y municipios cercanos. Si tienes dudas sobre tu zona, pregúntanos por WhatsApp.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Lleváis vosotros los productos y herramientas?</summary>
+        <div class="ans">Sí. Trabajamos con productos profesionales y herramientas adecuadas para cada tipo de servicio.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Hacéis servicios puntuales o también periódicos?</summary>
+        <div class="ans">Ambos. Podemos hacer un servicio único (limpieza profunda, poda, limpieza de parcela…) o un mantenimiento periódico.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Cómo pido presupuesto?</summary>
+        <div class="ans">Lo más rápido es escribirnos por WhatsApp al 624 17 69 32 contándonos qué necesitas. Te respondemos lo antes posible.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="zona" class="zona">
+  <div class="container zona-grid">
+    <div>
+      <div class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff">Zona de trabajo</div>
+      <h2>Madrid y alrededores</h2>
+      <p>Damos servicio en Madrid capital y municipios cercanos. Si tienes dudas sobre si llegamos a tu zona, pregúntanos por WhatsApp y te respondemos en minutos.</p>
+      <div class="zona-tags">
+        <span>Madrid capital</span>
+        <span>Móstoles</span>
+        <span>Alcorcón</span>
+        <span>Getafe</span>
+        <span>Leganés</span>
+        <span>Fuenlabrada</span>
+        <span>Pozuelo</span>
+        <span>Las Rozas</span>
+        <span>Majadahonda</span>
+        <span>Alcobendas</span>
+        <span>San Sebastián de los Reyes</span>
+      </div>
+    </div>
+    <div class="zona-card">
+      <h3>Pide tu presupuesto</h3>
+      <p style="color:var(--texto-secundario)">Te respondemos lo antes posible</p>
+      <div class="phone">624 17 69 32</div>
+      <a class="btn btn-wa" href="https://wa.me/34624176932" target="_blank" rel="noopener" style="width:100%;justify-content:center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="cta-final">
+  <div class="container">
+    <div class="eyebrow" style="background:var(--rosa-suave);color:var(--rosa-rosas)">Contacto rápido</div>
+    <h2>¿Hablamos? Cuéntanos qué necesitas</h2>
+    <p>Te preparamos un presupuesto sin compromiso. Limpieza, jardinería o ambos — lo que tu espacio necesite.</p>
+    <a class="btn btn-wa" href="https://wa.me/34624176932?text=Hola,%20me%20gustaría%20pedir%20un%20presupuesto" target="_blank" rel="noopener" style="padding:16px 32px;font-size:1.05rem">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+      Escribir al 624 17 69 32
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="img/logo.jpg" alt="Logo">
+          <div>
+            <strong>Limpieza &amp; Jardinería de Rosas</strong>
+            <div style="font-size:.85rem;color:rgba(255,255,255,.55)">Madrid y alrededores</div>
+          </div>
+        </div>
+        <p style="max-width:340px;color:rgba(255,255,255,.6);font-size:.9rem">
+          Servicios de limpieza y jardinería con trato cercano, productos profesionales y resultados impecables.
+        </p>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Limpieza de viviendas</a></li>
+          <li><a href="#servicios">Limpieza de oficinas</a></li>
+          <li><a href="#servicios">Mantenimiento de jardines</a></li>
+          <li><a href="#servicios">Poda y corte de césped</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li>📞 624 17 69 32</li>
+          <li>📍 Madrid y alrededores</li>
+          <li><a href="https://wa.me/34624176932" target="_blank" rel="noopener">💬 WhatsApp directo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Limpieza &amp; Jardinería de Rosas · Todos los derechos reservados
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/34624176932" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
+</a>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open')));
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Auto-add reveal to service blocks and why cards
+document.querySelectorAll('.service-block, .why-card').forEach((el,i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = (i * 60) + 'ms';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
