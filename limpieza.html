@@ -432,6 +432,11 @@ footer a:hover{color:var(--azul-claro)}
   padding:8px 12px;border-radius:8px;
   font-size:.86rem;font-weight:600;
 }
+.dropdown-menu a.it-tapi .di,.dropdown-menu a.it-gar .di{background:var(--azul-suave);color:var(--azul-limpieza)}
+@media (max-width:900px){.dropdown.open .dropdown-menu{max-height:420px}}
+@media (max-width:900px){
+  .nav-links.open .dropdown-menu{opacity:1!important;visibility:visible!important;max-height:none!important;padding:6px 0 6px 12px!important}
+}
 .floating-card{box-shadow:0 10px 24px rgba(31,41,51,.12);border:1px solid rgba(11,111,174,.1)}
 .floating-card .ic{font-weight:700}
 .svc-card,.ideal-card,.step-h,.cta-box,.urgente-cta{
@@ -492,11 +497,19 @@ footer a:hover{color:var(--azul-claro)}
     <nav class="nav-links" id="navlinks">
       <a href="index.html">Inicio</a>
       <div class="dropdown">
-        <button class="dropdown-toggle active" type="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="arrow">▾</span></button>
+        <button class="dropdown-toggle active" type="button" aria-haspopup="true" aria-expanded="false" onclick="event.stopImmediatePropagation();this.closest('.dropdown').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.dropdown').classList.contains('open'))">Servicios <span class="arrow">▾</span></button>
         <div class="dropdown-menu">
           <a href="limpieza.html" class="it-limp">
             <span class="di">🧽</span>
             <span class="dt">Limpieza<small>Viviendas, oficinas, comunidades…</small></span>
+          </a>
+          <a href="tapicerias.html" class="it-tapi">
+            <span class="di">🛋</span>
+            <span class="dt">Tapicerías y sofás<small>Sofás, colchones, sillas y moquetas</small></span>
+          </a>
+          <a href="garajes-portales.html" class="it-gar">
+            <span class="di">🅿️</span>
+            <span class="dt">Garajes y portales<small>Parkings, locales y portales</small></span>
           </a>
           <a href="jardineria.html" class="it-jard">
             <span class="di">🌿</span>
@@ -538,6 +551,7 @@ footer a:hover{color:var(--azul-claro)}
         <li><span class="chk">✓</span>Productos profesionales incluidos</li>
         <li><span class="chk">✓</span>Servicios puntuales o periódicos</li>
         <li><span class="chk">✓</span>Presupuesto sin compromiso</li>
+        <li><span class="chk">✓</span>Limpieza básica desde 15 €/hora</li>
       </ul>
     </div>
     <div class="hero-visual">
@@ -676,7 +690,7 @@ footer a:hover{color:var(--azul-claro)}
   <div class="container band-grid">
     <div class="reveal">
       <h2>Limpieza profesional, sin sorpresas</h2>
-      <p>Trabajamos con productos y herramientas adecuadas para cada superficie. Lo importante: el resultado se nota y el presupuesto está claro desde el principio.</p>
+      <p>Trabajamos con productos y herramientas adecuadas para cada superficie. La limpieza básica es desde 15 €/hora y el resto de trabajos se presupuesta según el servicio.</p>
       <a class="btn btn-wa" href="https://wa.me/34624176932" target="_blank" rel="noopener">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
         Hablar por WhatsApp
@@ -684,7 +698,7 @@ footer a:hover{color:var(--azul-claro)}
     </div>
     <div class="band-stats reveal">
       <div class="band-stat"><div class="lab">Productos</div><div class="val">Profesionales</div></div>
-      <div class="band-stat"><div class="lab">Presupuesto</div><div class="val">Sin compromiso</div></div>
+      <div class="band-stat"><div class="lab">Limpieza básica</div><div class="val">Desde 15 €/hora</div></div>
       <div class="band-stat"><div class="lab">Servicios</div><div class="val">Puntuales o periódicos</div></div>
       <div class="band-stat"><div class="lab">Zona</div><div class="val">Madrid y alrededores</div></div>
     </div>
@@ -757,6 +771,8 @@ footer a:hover{color:var(--azul-claro)}
         <h5>Servicios</h5>
         <ul>
           <li><a href="limpieza.html">Limpieza</a></li>
+          <li><a href="tapicerias.html">Tapicerías y sofás</a></li>
+          <li><a href="garajes-portales.html">Garajes y portales</a></li>
           <li><a href="jardineria.html">Jardinería</a></li>
           <li><a href="index.html#zona">Zonas</a></li>
         </ul>
@@ -831,6 +847,12 @@ window.addEventListener('scroll', () => {
   else backBtn.classList.remove('visible');
 }, { passive: true });
 backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+window.addEventListener('load', () => {
+  if (!location.hash) return;
+  const target = document.querySelector(location.hash);
+  if (target) setTimeout(() => target.scrollIntoView({ block: 'start' }), 120);
+});
 </script>
 </body>
 </html>

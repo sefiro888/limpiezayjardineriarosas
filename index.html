@@ -139,6 +139,8 @@ header::before{
   font-size:1rem;flex-shrink:0;
 }
 .dropdown-menu a.it-limp .di{background:var(--azul-suave);color:var(--azul-limpieza)}
+.dropdown-menu a.it-tapi .di{background:var(--azul-suave);color:var(--azul-limpieza)}
+.dropdown-menu a.it-gar .di{background:var(--azul-suave);color:var(--azul-limpieza)}
 .dropdown-menu a.it-jard .di{background:var(--verde-suave);color:var(--verde-principal)}
 .dropdown-menu a .dt{display:flex;flex-direction:column;line-height:1.2}
 .dropdown-menu a .dt small{font-size:.78rem;color:var(--texto-secundario);font-weight:400}
@@ -934,6 +936,11 @@ footer a:hover{color:var(--verde-medio)}
 .hero-photo-card img{width:100%;height:100%;object-fit:cover}
 .hero-logo-card{background:#fff;padding:28px}
 .hero-logo-card img{object-fit:contain}
+.dropdown-menu a.it-tapi .di,.dropdown-menu a.it-gar .di{background:var(--azul-suave);color:var(--azul-limpieza)}
+@media (max-width:900px){.dropdown.open .dropdown-menu{max-height:420px}}
+@media (max-width:900px){
+  .nav-links.open .dropdown-menu{opacity:1!important;visibility:visible!important;max-height:none!important;padding:6px 0 6px 12px!important}
+}
 .hero-photo-label{
   position:absolute;left:18px;bottom:18px;
   background:rgba(18,49,90,.88);color:#fff;
@@ -1034,11 +1041,19 @@ footer a:hover{color:var(--verde-medio)}
     <button class="menu-toggle" aria-label="Abrir menú" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     <nav class="nav-links" id="navlinks">
       <div class="dropdown">
-        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">Servicios <span class="arrow">▾</span></button>
+        <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false" onclick="event.stopImmediatePropagation();this.closest('.dropdown').classList.toggle('open');this.setAttribute('aria-expanded',this.closest('.dropdown').classList.contains('open'))">Servicios <span class="arrow">▾</span></button>
         <div class="dropdown-menu">
           <a href="limpieza.html" class="it-limp">
             <span class="di">🧽</span>
             <span class="dt">Limpieza<small>Viviendas, oficinas, comunidades…</small></span>
+          </a>
+          <a href="tapicerias.html" class="it-tapi">
+            <span class="di">🛋</span>
+            <span class="dt">Tapicerías y sofás<small>Sofás, colchones, sillas y moquetas</small></span>
+          </a>
+          <a href="garajes-portales.html" class="it-gar">
+            <span class="di">🅿️</span>
+            <span class="dt">Garajes y portales<small>Parkings, locales y portales</small></span>
           </a>
           <a href="jardineria.html" class="it-jard">
             <span class="di">🌿</span>
@@ -1156,6 +1171,7 @@ footer a:hover{color:var(--verde-medio)}
           <li><span class="chk">✓</span>Limpieza de viviendas</li>
           <li><span class="chk">✓</span>Limpieza de oficinas y locales</li>
           <li><span class="chk">✓</span>Limpiezas profundas (cocinas y baños)</li>
+          <li><span class="chk">✓</span>Tapicerías, sofás y colchones</li>
           <li><span class="chk">✓</span>Limpieza de comunidades</li>
           <li><span class="chk">✓</span>Cristales y escaparates</li>
         </ul>
@@ -1277,7 +1293,7 @@ footer a:hover{color:var(--verde-medio)}
       <div class="why-card">
         <div class="why-icon">💶</div>
         <h4>Precios económicos</h4>
-        <p>Presupuesto sin compromiso, claro y ajustado a lo que necesitas.</p>
+        <p>Limpieza básica desde 15 €/hora. Otros trabajos se presupuestan según el servicio.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">⚡</div>
@@ -1407,7 +1423,7 @@ footer a:hover{color:var(--verde-medio)}
     <div class="faq-list">
       <details class="faq-item reveal">
         <summary>¿Cuánto cuesta un servicio?</summary>
-        <div class="ans">Cada trabajo es distinto: depende del tamaño del espacio, del tipo de limpieza o jardinería y de la frecuencia. Por eso preparamos un presupuesto personalizado y sin compromiso para cada cliente.</div>
+        <div class="ans">La limpieza básica es desde 15 €/hora. Otros trabajos dependen del tamaño del espacio, del tipo de limpieza o jardinería y de la frecuencia; por eso preparamos presupuesto personalizado y sin compromiso.</div>
       </details>
       <details class="faq-item reveal">
         <summary>¿En qué zonas trabajáis?</summary>
@@ -1532,6 +1548,8 @@ footer a:hover{color:var(--verde-medio)}
         <ul>
           <li><a href="#servicios">Limpieza de viviendas</a></li>
           <li><a href="#servicios">Limpieza de oficinas</a></li>
+          <li><a href="tapicerias.html">Tapicerías y sofás</a></li>
+          <li><a href="garajes-portales.html">Garajes y portales</a></li>
           <li><a href="#servicios">Mantenimiento de jardines</a></li>
           <li><a href="#servicios">Poda y corte de césped</a></li>
         </ul>
