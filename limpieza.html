@@ -295,6 +295,57 @@ footer a:hover{color:var(--azul-claro)}
 .wa-float svg{width:32px;height:32px}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5),0 10px 28px rgba(37,211,102,.5)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0),0 10px 28px rgba(37,211,102,.5)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0),0 10px 28px rgba(37,211,102,.5)}}
 
+/* Micro-interactions */
+.urgente-feat{transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .3s,border-color .3s,box-shadow .3s}
+.urgente-feat:hover{transform:translateY(-5px);background:rgba(255,255,255,.16);border-color:rgba(217,75,135,.45);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.urgente-feat .uic{transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .3s,color .3s,box-shadow .3s}
+.urgente-feat:hover .uic{transform:scale(1.18) rotate(-10deg);background:var(--rosa-rosas);color:#fff;box-shadow:0 8px 18px rgba(217,75,135,.5)}
+.urgente-feat strong{transition:color .25s}
+.urgente-feat:hover strong{color:var(--rosa-rosas)}
+.urgente-cta{transition:transform .35s,box-shadow .35s}
+.urgente-cta:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(0,0,0,.32)}
+.urgente-cta .ph{transition:transform .3s,letter-spacing .3s}
+.urgente-cta:hover .ph{transform:scale(1.04);letter-spacing:2px}
+
+.svc-card .svc-icon{transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.svc-card:hover .svc-icon{transform:scale(1.1) rotate(-6deg);box-shadow:0 14px 28px rgba(11,111,174,.45)}
+.svc-card ul li{transition:transform .25s,color .2s}
+.svc-card ul li:hover{transform:translateX(6px);color:var(--azul-oscuro)}
+
+.ideal-card{transition:transform .25s,box-shadow .25s,border-top-width .25s}
+.ideal-card .ideal-emoji{transition:transform .35s cubic-bezier(.34,1.56,.64,1);display:inline-block}
+.ideal-card:hover .ideal-emoji{transform:scale(1.2) rotate(-10deg)}
+
+.step-h .n{transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.step-h:hover .n{transform:scale(1.12) rotate(-8deg);box-shadow:0 12px 24px rgba(11,111,174,.45)}
+
+.band-stat{transition:transform .25s,background .25s,border-color .25s}
+.band-stat:hover{transform:translateY(-3px);background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.32)}
+
+.hero-bullets li{transition:transform .25s}
+.hero-bullets li:hover{transform:translateX(6px)}
+.hero-bullets .chk{transition:transform .3s}
+.hero-bullets li:hover .chk{transform:scale(1.18) rotate(10deg)}
+
+.cta-box{transition:transform .35s,box-shadow .35s}
+.cta-box:hover{transform:translateY(-4px);box-shadow:0 26px 56px rgba(0,0,0,.18)}
+.cta-box .phone-big{transition:transform .3s,letter-spacing .3s}
+.cta-box:hover .phone-big{transform:scale(1.04);letter-spacing:2px}
+
+.brand{transition:transform .25s}
+.brand:hover{transform:scale(1.02)}
+.brand img{transition:box-shadow .25s,transform .3s}
+.brand:hover img{box-shadow:0 6px 16px rgba(11,111,174,.3);transform:rotate(-6deg)}
+
+.floating-card{transition:transform .3s,box-shadow .3s}
+.floating-card:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 24px 50px rgba(0,0,0,.22)}
+
+.dropdown-menu a .di{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.dropdown-menu a:hover .di{transform:scale(1.15) rotate(-8deg)}
+
+.topbar a.tb-link{transition:color .25s,transform .25s;display:inline-block}
+.topbar a.tb-link:hover{transform:translateX(3px)}
+
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
@@ -358,6 +409,63 @@ footer a:hover{color:var(--azul-claro)}
 }
 @media (max-width:380px){
   .brand-text span{display:none}
+}
+
+/* Visual polish: cleaner, calmer and photo-led */
+.topbar{background:#12315a}
+.topbar::before,.topbar .pulse,.hero-urgent-chip .huc-dot,.bubble,.hero-emoji,.wa-float{animation:none}
+.hero{
+  background:linear-gradient(180deg,#fff 0%,#f4f9fd 100%);
+  padding:72px 0 78px;
+}
+.hero::before{display:none}
+.hero-card{
+  position:absolute;inset:0;border-radius:22px;background:#fff;
+  box-shadow:0 18px 44px rgba(31,41,51,.14);
+  border:1px solid rgba(11,111,174,.12);
+}
+.hero-card::before,.hero-card::after{display:none}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-photo-label{
+  position:absolute;left:18px;bottom:18px;
+  background:rgba(18,49,90,.88);color:#fff;
+  padding:8px 12px;border-radius:8px;
+  font-size:.86rem;font-weight:600;
+}
+.floating-card{box-shadow:0 10px 24px rgba(31,41,51,.12);border:1px solid rgba(11,111,174,.1)}
+.floating-card .ic{font-weight:700}
+.svc-card,.ideal-card,.step-h,.cta-box,.urgente-cta{
+  box-shadow:0 4px 18px rgba(31,41,51,.07);
+  border-color:rgba(31,41,51,.08);
+}
+.svc-card::before{width:100%;height:3px;background:var(--azul-limpieza)}
+.svc-card:hover,.ideal-card:hover,.step-h:hover,.cta-box:hover{
+  transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,41,51,.10);
+}
+.svc-icon,.step-h .n{box-shadow:none}
+.ideal-emoji{font-size:1.8rem}
+.urgente{
+  background:#102844;
+  padding:68px 0;
+}
+.urgente::before,.urgente::after{display:none}
+.urgente-badge{background:rgba(255,255,255,.1);box-shadow:none;border:1px solid rgba(255,255,255,.18);color:#fff}
+.urgente-badge::before{background:var(--rosa-rosas);animation:none}
+.urgente-feat{background:rgba(255,255,255,.07);backdrop-filter:none;border-color:rgba(255,255,255,.12)}
+.urgente-feat .uic{background:rgba(255,255,255,.1);color:#fff;font-size:.95rem}
+.urgente-cta{border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.urgente-cta::before{background:var(--rosa-rosas)}
+.cta{background:#f4f9fd}
+.cta-box::before{height:4px}
+.reveal{opacity:1;transform:none;transition:none}
+.wa-float{box-shadow:0 8px 22px rgba(37,211,102,.32)}
+@media (max-width:900px){
+  .hero-visual{max-width:380px}
+}
+@media (max-width:520px){
+  .hero{padding:42px 0 52px}
+  .hero-card{border-radius:18px}
+  .hero-photo-label{left:12px;bottom:12px;font-size:.78rem}
 }
 </style>
 </head>
@@ -434,13 +542,11 @@ footer a:hover{color:var(--azul-claro)}
     </div>
     <div class="hero-visual">
       <div class="hero-card">
-        <div class="bubbles">
-          <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
-        </div>
-        <div class="hero-emoji">🧽</div>
+        <img src="img/gallery-2.jpg" alt="Trabajo real de limpieza exterior">
+        <span class="hero-photo-label">Trabajo real</span>
       </div>
-      <div class="floating-card fc-1"><div class="ic">✨</div>Brillo profesional</div>
-      <div class="floating-card fc-2"><div class="ic">🧴</div>Productos incluidos</div>
+      <div class="floating-card fc-1"><div class="ic">✓</div>Limpieza exterior</div>
+      <div class="floating-card fc-2"><div class="ic">✓</div>Productos incluidos</div>
     </div>
   </div>
 </section>

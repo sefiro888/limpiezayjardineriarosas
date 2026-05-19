@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <style>
 :root{
   --verde-principal:#2F7D32;
@@ -611,6 +612,75 @@ footer a:hover{color:var(--verde-medio)}
 .stat strong{display:block;color:var(--verde-oscuro);font-size:1.05rem;margin-bottom:2px}
 .stat span{font-size:.85rem;color:var(--texto-secundario)}
 
+/* Micro-interactions */
+.urgente-feat{transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .3s,border-color .3s,box-shadow .3s}
+.urgente-feat:hover{transform:translateY(-5px);background:rgba(255,255,255,.16);border-color:rgba(217,75,135,.45);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.urgente-feat .uic{transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .3s,color .3s,box-shadow .3s}
+.urgente-feat:hover .uic{transform:scale(1.18) rotate(-10deg);background:var(--rosa-rosas);color:#fff;box-shadow:0 8px 18px rgba(217,75,135,.5)}
+.urgente-feat strong{transition:color .25s}
+.urgente-feat:hover strong{color:var(--rosa-rosas)}
+
+.urgente-cta{transition:transform .35s,box-shadow .35s}
+.urgente-cta:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(0,0,0,.32)}
+.urgente-cta .ph{transition:transform .3s,letter-spacing .3s}
+.urgente-cta:hover .ph{transform:scale(1.04);letter-spacing:2px}
+
+.stat{transition:background .25s,transform .25s}
+.stat:hover{background:var(--verde-suave);transform:translateY(-3px)}
+.stat .icon{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.stat:hover .icon{transform:scale(1.2) rotate(-8deg)}
+
+.service-block .service-icon{transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.service-block:hover .service-icon{transform:scale(1.1) rotate(-6deg)}
+.limpieza:hover .service-icon{box-shadow:0 14px 28px rgba(11,111,174,.5)}
+.jardineria:hover .service-icon{box-shadow:0 14px 28px rgba(47,125,50,.5)}
+.service-list li{transition:transform .25s,color .2s}
+.service-list li:hover{transform:translateX(6px)}
+.service-list .chk{transition:transform .3s,box-shadow .25s}
+.service-list li:hover .chk{transform:scale(1.18) rotate(10deg);box-shadow:0 4px 10px rgba(0,0,0,.18)}
+
+.counter-card .counter-value{transition:transform .35s}
+.counter-card:hover .counter-value{transform:scale(1.08)}
+
+.zona-card{transition:transform .3s,box-shadow .3s}
+.zona-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,.2)}
+.zona-card .phone{transition:transform .3s,letter-spacing .3s}
+.zona-card:hover .phone{transform:scale(1.04);letter-spacing:1.5px}
+
+.zona-chips span{transition:transform .25s cubic-bezier(.34,1.56,.64,1),background .25s,border-color .25s}
+.zona-chips span:hover{transform:translateY(-3px) scale(1.05);background:rgba(255,255,255,.32);border-color:rgba(255,255,255,.55)}
+
+.faq-item summary{transition:padding-left .3s,background-color .25s}
+.faq-item:hover summary{padding-left:34px;background:var(--verde-suave)}
+.faq-item summary::after{transition:transform .3s,color .25s}
+.faq-item:hover summary::after{color:var(--verde-medio)}
+
+.hero-meta div{transition:transform .25s,color .25s}
+.hero-meta div:hover{transform:translateY(-2px);color:var(--verde-oscuro)}
+
+.brand{transition:transform .25s}
+.brand:hover{transform:scale(1.02)}
+.brand img{transition:box-shadow .25s,transform .3s}
+.brand:hover img{box-shadow:0 6px 16px rgba(47,125,50,.3);transform:rotate(-6deg)}
+
+.gallery-item .tag{
+  background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  padding:6px 12px;border-radius:8px;
+}
+.gallery-item:hover .tag{background:var(--verde-principal)}
+
+.dropdown-menu a .di{transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.dropdown-menu a:hover .di{transform:scale(1.15) rotate(-8deg)}
+
+.zona-map{transition:transform .35s,box-shadow .35s}
+.zona-map:hover{transform:translateY(-4px);box-shadow:0 26px 50px rgba(0,0,0,.22)}
+
+.topbar a.tb-link{transition:color .25s,transform .25s;display:inline-block}
+.topbar a.tb-link:hover{transform:translateX(3px)}
+
+.hero-urgent-chip{transition:transform .25s,box-shadow .25s,border-color .25s}
+.hero-urgent-chip:hover{border-color:rgba(217,75,135,.7)}
+
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -652,45 +722,67 @@ footer a:hover{color:var(--verde-medio)}
 .counter-label{font-weight:600;color:var(--texto-principal);font-size:1rem;margin-bottom:4px}
 .counter-desc{font-size:.85rem;color:var(--texto-secundario)}
 
-/* Madrid map */
+/* Map */
 .zona-map{
-  position:relative;width:100%;max-width:520px;margin:30px auto 0;
-  aspect-ratio:1.1;
+  position:relative;width:100%;border-radius:20px;overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+  aspect-ratio:1.05;
+  border:4px solid #fff;
+  margin-top:24px;
 }
-.zona-map svg{width:100%;height:100%;display:block}
-.zona-map .pin{
-  position:absolute;transform:translate(-50%,-50%);
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  cursor:default;transition:transform .2s;
-}
-.zona-map .pin:hover{transform:translate(-50%,-50%) scale(1.1);z-index:5}
-.zona-map .pin .dot{
-  width:14px;height:14px;border-radius:50%;
-  background:#fff;border:3px solid var(--verde-principal);
-  box-shadow:0 4px 12px rgba(47,125,50,.4);
+#leafletMap{width:100%;height:100%;border:0;display:block;background:#eef3f0}
+.leaflet-control-attribution{font-size:.65rem !important}
+.zona-marker{
+  background:var(--verde-principal);
+  border:3px solid #fff;
+  border-radius:50%;
+  width:20px;height:20px;
+  box-shadow:0 4px 12px rgba(47,125,50,.5);
   position:relative;
 }
-.zona-map .pin .dot::after{
+.zona-marker::after{
   content:"";position:absolute;inset:-6px;border-radius:50%;
-  border:2px solid var(--verde-principal);opacity:.35;
-  animation:pulseMap 2.5s ease-out infinite;
+  border:2px solid var(--verde-principal);opacity:.4;
+  animation:markerPulse 2.4s ease-out infinite;
 }
-.zona-map .pin.center .dot{
-  width:22px;height:22px;background:var(--verde-principal);border-color:#fff;
+.zona-marker.main{
+  background:var(--rosa-rosas);width:26px;height:26px;
+  box-shadow:0 6px 16px rgba(217,75,135,.55);
 }
-.zona-map .pin.center .dot::after{border-color:var(--verde-medio);inset:-10px}
-.zona-map .pin .lab{
-  font-size:.75rem;font-weight:600;color:var(--verde-oscuro);
-  background:#fff;padding:3px 8px;border-radius:8px;
-  box-shadow:0 4px 10px rgba(0,0,0,.08);
-  white-space:nowrap;
+.zona-marker.main::after{border-color:var(--rosa-rosas)}
+@keyframes markerPulse{
+  0%{transform:scale(.8);opacity:.55}
+  100%{transform:scale(2.2);opacity:0}
 }
-.zona-map .pin.center .lab{
-  background:var(--verde-principal);color:#fff;font-size:.85rem;padding:5px 12px;
+.leaflet-popup-content-wrapper{
+  border-radius:12px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.14) !important;
 }
-@keyframes pulseMap{
-  0%{transform:scale(.8);opacity:.5}
-  100%{transform:scale(2);opacity:0}
+.leaflet-popup-content{
+  margin:10px 14px !important;font-family:'Inter',sans-serif !important;
+  font-size:.85rem !important;font-weight:600 !important;color:var(--verde-oscuro) !important;
+}
+.leaflet-popup-content small{display:block;font-weight:400;color:var(--texto-secundario);font-size:.75rem;margin-top:2px}
+.leaflet-popup-tip{box-shadow:0 4px 8px rgba(0,0,0,.08) !important}
+.zona-map .map-badge{
+  position:absolute;top:14px;left:14px;z-index:2;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+  padding:10px 14px;border-radius:12px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,.15);
+  font-size:.88rem;font-weight:600;color:var(--verde-oscuro);
+}
+.zona-map .map-badge .mb-ico{
+  width:32px;height:32px;border-radius:9px;
+  background:var(--verde-principal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.zona-map .map-badge small{display:block;font-size:.72rem;color:var(--texto-secundario);font-weight:400}
+.zona-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.zona-chips span{
+  background:rgba(255,255,255,.18);padding:6px 12px;
+  border-radius:999px;font-size:.82rem;backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22);color:#fff;
 }
 
 /* Back to top */
@@ -825,6 +917,99 @@ footer a:hover{color:var(--verde-medio)}
 @media (max-width:380px){
   .brand-text span{display:none}
 }
+
+/* Visual polish: cleaner, more real, less flyer-like */
+.topbar{background:#12315a}
+.topbar::before,.topbar .pulse,.hero::before,.logo-wrap::after{animation:none}
+.hero{
+  background:linear-gradient(180deg,#fff 0%,#f5faf7 100%);
+  padding:72px 0 78px;
+}
+.hero-photo-card{
+  position:relative;width:min(500px,100%);aspect-ratio:4/3;
+  border-radius:20px;overflow:hidden;background:#fff;
+  box-shadow:0 18px 44px rgba(31,41,51,.14);
+  border:1px solid rgba(47,125,50,.12);
+}
+.hero-photo-card img{width:100%;height:100%;object-fit:cover}
+.hero-logo-card{background:#fff;padding:28px}
+.hero-logo-card img{object-fit:contain}
+.hero-photo-label{
+  position:absolute;left:18px;bottom:18px;
+  background:rgba(18,49,90,.88);color:#fff;
+  padding:8px 12px;border-radius:8px;
+  font-size:.86rem;font-weight:600;
+}
+.floating-badge{box-shadow:0 10px 24px rgba(31,41,51,.12);border:1px solid rgba(47,125,50,.1)}
+.service-block,.why-card,.step,.counter-card,.zona-card,.cta-box,.faq-item{
+  box-shadow:0 4px 18px rgba(31,41,51,.07);
+  border-color:rgba(31,41,51,.08);
+}
+.service-block.limpieza,.service-block.jardineria{background:#fff}
+.service-block:hover,.why-card:hover,.step:hover,.counter-card:hover,.zona-card:hover,.cta-box:hover{
+  transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,41,51,.10);
+}
+.service-icon,.why-icon,.step-num{box-shadow:none}
+.why-icon,.stat .icon{font-size:1.25rem}
+.urgente{
+  background:#102844;
+  padding:68px 0;
+}
+.urgente::before,.urgente::after{display:none}
+.urgente-badge{background:rgba(255,255,255,.1);box-shadow:none;border:1px solid rgba(255,255,255,.18);color:#fff}
+.urgente-badge::before{background:var(--rosa-rosas);animation:none}
+.urgente-feat{background:rgba(255,255,255,.07);backdrop-filter:none;border-color:rgba(255,255,255,.12)}
+.urgente-feat .uic{background:rgba(255,255,255,.1);color:#fff;font-size:.95rem}
+.urgente-cta{border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.urgente-cta::before{background:var(--rosa-rosas)}
+.gallery-grid{grid-auto-rows:220px;gap:18px}
+.gallery-item{
+  border-radius:14px;box-shadow:none;border:1px solid rgba(31,41,51,.08);
+  cursor:default;background:#f6f8f5;
+}
+.gallery-item img{transition:none}
+.gallery-item:hover img{transform:none}
+.gallery-item::after{opacity:1;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.52) 100%)}
+.gallery-item .tag{opacity:1;transform:none;background:rgba(18,49,90,.86);border-radius:8px}
+.gallery-item:hover .tag{background:rgba(18,49,90,.86)}
+.gallery-item.flyer img{object-fit:contain;background:#fff;padding:10px}
+.gallery-item.flyer::after{background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.35) 100%)}
+.real-video-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+  margin-bottom:22px;
+}
+.real-video{
+  background:#fff;border:1px solid rgba(31,41,51,.08);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(31,41,51,.07);
+}
+.real-video video{
+  width:100%;aspect-ratio:16/9;display:block;
+  object-fit:cover;background:#0f1d4d;
+}
+.real-video-caption{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 16px;color:var(--texto-principal);font-weight:700;
+}
+.real-video-caption span{
+  color:var(--texto-secundario);font-size:.88rem;font-weight:500;
+}
+.wa-float{animation:none;box-shadow:0 8px 22px rgba(37,211,102,.32)}
+.reveal{opacity:1;transform:none;transition:none}
+@media (max-width:900px){
+  .hero-photo-card{margin:0 auto;aspect-ratio:4/3}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px}
+}
+@media (max-width:520px){
+  .hero{padding:42px 0 52px}
+  .hero-photo-card{aspect-ratio:1.05}
+  .hero-photo-label{left:12px;bottom:12px;font-size:.78rem}
+  .real-video-grid{grid-template-columns:1fr}
+  .real-video-caption{display:block}
+  .real-video-caption span{display:block;margin-top:2px}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:230px}
+  .gallery-item.big,.gallery-item.tall{grid-column:auto;grid-row:auto}
+}
 </style>
 </head>
 <body>
@@ -907,11 +1092,12 @@ footer a:hover{color:var(--verde-medio)}
       </div>
     </div>
     <div class="hero-visual">
-      <div class="logo-wrap">
+      <div class="hero-photo-card hero-logo-card">
         <img src="img/logo.jpg" alt="Logo Limpieza y Jardinería de Rosas">
+        <div class="hero-photo-label">Limpieza & Jardinería de Rosas</div>
       </div>
-      <div class="floating-badge fb-1"><span class="dot"></span>Limpieza profesional</div>
-      <div class="floating-badge fb-2"><span class="dot"></span>Jardinería integral</div>
+      <div class="floating-badge fb-1"><span class="dot"></span>Limpieza exterior</div>
+      <div class="floating-badge fb-2"><span class="dot"></span>Jardinería real</div>
     </div>
   </div>
   <div class="container">
@@ -1162,34 +1348,50 @@ footer a:hover{color:var(--verde-medio)}
 <section class="gallery" id="galeria">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">Nuestro trabajo</div>
-      <h2>Limpieza y jardín cuidados al detalle</h2>
-      <p>Una muestra del tipo de espacios y servicios que cuidamos cada día.</p>
+      <div class="eyebrow">Trabajos reales</div>
+      <h2>Fotos reales de limpieza y jardín</h2>
+      <p>Primero los trabajos en espacios reales; los flyers quedan como apoyo para explicar servicios puntuales.</p>
+    </div>
+    <div class="real-video-grid">
+      <div class="real-video reveal">
+        <video controls playsinline preload="metadata" poster="img/gallery-1.jpg">
+          <source src="media/trabajo-real-1.mp4" type="video/mp4">
+        </video>
+        <div class="real-video-caption">
+          Trabajo real en exterior
+          <span>Limpieza y mantenimiento</span>
+        </div>
+      </div>
+      <div class="real-video reveal">
+        <video controls playsinline preload="metadata" poster="img/gallery-2.jpg">
+          <source src="media/trabajo-real-2.mp4" type="video/mp4">
+        </video>
+        <div class="real-video-caption">
+          Proceso de trabajo
+          <span>Espacios reales</span>
+        </div>
+      </div>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item reveal">
-        <img src="img/gallery-1.jpg" alt="Servicio de limpieza profesional" loading="lazy">
-        <span class="tag">Limpieza profesional</span>
+      <div class="gallery-item big reveal">
+        <img src="img/gallery-1.jpg" alt="Trabajo real de limpieza exterior en jardín">
+        <span class="tag">Trabajo real exterior</span>
       </div>
       <div class="gallery-item reveal">
-        <img src="img/gallery-2.jpg" alt="Limpieza de hogar" loading="lazy">
-        <span class="tag">Viviendas</span>
-      </div>
-      <div class="gallery-item tall reveal">
-        <img src="img/gallery-6.jpg" alt="Servicio urgente · Fines de semana y festivos" loading="lazy" style="object-fit:contain;background:#fff">
-        <span class="tag">Servicio urgente</span>
+        <img src="img/gallery-2.jpg" alt="Trabajo real de limpieza en terraza y jardín">
+        <span class="tag">Terraza y jardín</span>
       </div>
       <div class="gallery-item reveal">
-        <img src="img/gallery-3.jpg" alt="Mantenimiento de jardín" loading="lazy">
-        <span class="tag">Jardinería</span>
+        <img src="img/gallery-4.jpg" alt="Trabajo real de recogida y mantenimiento de jardín">
+        <span class="tag">Mantenimiento real</span>
       </div>
-      <div class="gallery-item reveal">
-        <img src="img/gallery-4.jpg" alt="Limpieza profunda" loading="lazy">
-        <span class="tag">Limpieza profunda</span>
+      <div class="gallery-item flyer reveal">
+        <img src="img/gallery-3.jpg" alt="Flyer de servicios de limpieza y jardinería">
+        <span class="tag">Servicios</span>
       </div>
-      <div class="gallery-item reveal">
-        <img src="img/gallery-5.jpg" alt="Corte de césped y poda" loading="lazy">
-        <span class="tag">Corte y poda</span>
+      <div class="gallery-item flyer reveal">
+        <img src="img/gallery-6.jpg" alt="Flyer de servicio urgente">
+        <span class="tag">Urgencias</span>
       </div>
     </div>
   </div>
@@ -1265,31 +1467,25 @@ footer a:hover{color:var(--verde-medio)}
       <div class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff">Zona de trabajo</div>
       <h2>Madrid y alrededores</h2>
       <p>Damos servicio en Madrid capital y municipios cercanos. Si tienes dudas sobre si llegamos a tu zona, pregúntanos por WhatsApp y te respondemos en minutos.</p>
+      <div class="zona-chips">
+        <span>Madrid capital</span>
+        <span>Móstoles</span>
+        <span>Alcorcón</span>
+        <span>Getafe</span>
+        <span>Leganés</span>
+        <span>Fuenlabrada</span>
+        <span>Pozuelo</span>
+        <span>Las Rozas</span>
+        <span>Majadahonda</span>
+        <span>Alcobendas</span>
+        <span>San Sebastián de los Reyes</span>
+      </div>
       <div class="zona-map">
-        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(255,255,255,.18)"/>
-              <stop offset="70%" stop-color="rgba(255,255,255,.04)"/>
-              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-            </radialGradient>
-          </defs>
-          <circle cx="260" cy="240" r="220" fill="url(#mapGlow)"/>
-          <circle cx="260" cy="240" r="170" fill="none" stroke="rgba(255,255,255,.15)" stroke-dasharray="4 6"/>
-          <circle cx="260" cy="240" r="110" fill="none" stroke="rgba(255,255,255,.18)" stroke-dasharray="4 6"/>
-          <path d="M260 70 L260 410 M90 240 L430 240" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-        </svg>
-        <div class="pin center" style="left:50%;top:50%"><div class="dot"></div><div class="lab">Madrid capital</div></div>
-        <div class="pin" style="left:30%;top:18%"><div class="dot"></div><div class="lab">Alcobendas</div></div>
-        <div class="pin" style="left:62%;top:14%"><div class="dot"></div><div class="lab">San Sebastián de los R.</div></div>
-        <div class="pin" style="left:10%;top:38%"><div class="dot"></div><div class="lab">Las Rozas</div></div>
-        <div class="pin" style="left:18%;top:60%"><div class="dot"></div><div class="lab">Majadahonda</div></div>
-        <div class="pin" style="left:28%;top:80%"><div class="dot"></div><div class="lab">Pozuelo</div></div>
-        <div class="pin" style="left:52%;top:88%"><div class="dot"></div><div class="lab">Alcorcón</div></div>
-        <div class="pin" style="left:75%;top:82%"><div class="dot"></div><div class="lab">Móstoles</div></div>
-        <div class="pin" style="left:88%;top:62%"><div class="dot"></div><div class="lab">Fuenlabrada</div></div>
-        <div class="pin" style="left:82%;top:40%"><div class="dot"></div><div class="lab">Leganés</div></div>
-        <div class="pin" style="left:70%;top:30%"><div class="dot"></div><div class="lab">Getafe</div></div>
+        <div class="map-badge">
+          <div class="mb-ico">📍</div>
+          <div>Zonas donde trabajamos<small>Madrid capital y alrededores</small></div>
+        </div>
+        <div id="leafletMap" role="img" aria-label="Mapa con las zonas de servicio"></div>
       </div>
     </div>
     <div class="zona-card">
@@ -1374,8 +1570,54 @@ footer a:hover{color:var(--verde-medio)}
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.594 5.392l-.999 3.648 3.736-.999z"/></svg>
 </a>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mapa con zonas reales
+(function initMap(){
+  const el = document.getElementById('leafletMap');
+  if (!el || typeof L === 'undefined') return;
+
+  const zones = [
+    { name:'Madrid capital',  lat:40.4168, lng:-3.7038, main:true },
+    { name:'Alcobendas',      lat:40.5414, lng:-3.6411 },
+    { name:'San Sebastián de los Reyes', lat:40.5481, lng:-3.6256 },
+    { name:'Las Rozas',       lat:40.4926, lng:-3.8731 },
+    { name:'Majadahonda',     lat:40.4720, lng:-3.8721 },
+    { name:'Pozuelo',         lat:40.4339, lng:-3.8136 },
+    { name:'Alcorcón',        lat:40.3489, lng:-3.8245 },
+    { name:'Móstoles',        lat:40.3223, lng:-3.8649 },
+    { name:'Fuenlabrada',     lat:40.2842, lng:-3.7942 },
+    { name:'Leganés',         lat:40.3275, lng:-3.7635 },
+    { name:'Getafe',          lat:40.3057, lng:-3.7327 }
+  ];
+
+  const map = L.map(el, {
+    center:[40.42,-3.74], zoom:10,
+    scrollWheelZoom:false, zoomControl:true, attributionControl:true,
+  });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom:18,
+    attribution:'© OpenStreetMap'
+  }).addTo(map);
+
+  zones.forEach(z => {
+    const icon = L.divIcon({
+      className:'',
+      html:`<div class="zona-marker ${z.main?'main':''}"></div>`,
+      iconSize:[z.main?26:20, z.main?26:20],
+      iconAnchor:[z.main?13:10, z.main?13:10]
+    });
+    L.marker([z.lat, z.lng], { icon })
+      .addTo(map)
+      .bindPopup(`<strong>${z.name}</strong><small>${z.main?'Centro de la zona':'Servicio disponible'}</small>`);
+  });
+
+  // Reactivar zoom con rueda al hacer click en el mapa
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
+})();
 document.querySelectorAll('#navlinks a').forEach(a => a.addEventListener('click', () => {
   document.getElementById('navlinks').classList.remove('open');
   document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
